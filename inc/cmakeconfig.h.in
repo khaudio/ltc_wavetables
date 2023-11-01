@@ -1,0 +1,4 @@
+/* The configured options and settings for ltc_wavetables */
+
+#define ltc_wavetables_VERSION_MAJOR      @ltc_wavetables_VERSION_MAJOR@
+#define ltc_wavetables_VERSION_MINOR      @ltc_wavetables_VERSION_MINOR@
