@@ -33,6 +33,10 @@ SOFTWARE.
 
 #include "intfloatconversions.h"
 
+#ifndef WAVETABLE_SCALE
+#define WAVETABLE_SCALE                     1.0
+#endif
+
 namespace LTC
 {
 
@@ -694,7 +698,7 @@ protected:
         std::array<Output, I> converted;
         for (int i(0); i < I; ++i)
         {
-            converted[i] = ((
+            converted[i] = (WAVETABLE_SCALE * (
                     std::is_floating_point<Output>::value
                     ? static_cast<Output>(values[i])
                     : float_to_int<Internal, Output>(values[i])
@@ -731,8 +735,8 @@ public:
         oneBitPositive2997 = _convert<26>(_oneBitPositive2997),
         oneBitNegative2997 = _convert<26>(_oneBitNegative2997);
 
-    constexpr StaticWavetable() {};
-    constexpr ~StaticWavetable() {};
+    StaticWavetable() = default;
+    ~StaticWavetable() = default;
 
     constexpr static int sample_rate(int fps)
     {
